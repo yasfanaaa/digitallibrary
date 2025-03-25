@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Reviews;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
-class ReviewsController extends Controller
+class ReviewController extends Controller
 {
     public function index()
     {
-        $reviews = Reviews::all();
+        $review = Review::all();
 
         return response()->json([
             'status' => 200,
-            'message' => 'Reviews retrieved successfully.',
-            'data' => $reviews
+            'message' => 'Review retrieved successfully.',
+            'data' => $review
         ], 200);
     }
 
@@ -29,7 +29,7 @@ class ReviewsController extends Controller
         // ]);
 
         
-        $review = Reviews::create($request->all());
+        $review = Review::create($request->all());
 
         try {
             // Store your data logic here
@@ -48,7 +48,7 @@ class ReviewsController extends Controller
 
     public function show($id)
     {
-        $review = Reviews::find($id);
+        $review = Review::find($id);
 
         if (!$review) {
             return response()->json([
@@ -68,7 +68,7 @@ class ReviewsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $review = Reviews::find($id);
+        $review = Review::find($id);
 
         if (!$review) {
             return response()->json([
@@ -96,7 +96,7 @@ class ReviewsController extends Controller
 
     public function destroy($id)
     {
-        $review = Reviews::find($id);
+        $review = Review::find($id);
 
         if (!$review) {
             return response()->json([
